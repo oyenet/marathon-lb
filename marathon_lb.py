@@ -171,6 +171,7 @@ class Marathon(object):
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
+                verify=False,
                 **kwargs
             )
 
@@ -230,7 +231,7 @@ class Marathon(object):
         }
 
         resp = requests.get(url, stream=True,
-                            headers=headers, auth=self.__auth)
+                            headers=headers, auth=self.__auth, verify=False)
 
         class Event(object):
             def __init__(self, data):
